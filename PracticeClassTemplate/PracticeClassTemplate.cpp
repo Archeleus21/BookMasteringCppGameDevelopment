@@ -45,6 +45,26 @@ T area_of_circle_with_radius(T r)
 	return pi * r * r;
 }
 
+//=========================================================================
+//Template using the datatype "auto"
+//=========================================================================
+//Old way
+template <typename ObjectType, typename ObjectFactory>
+void createObject(const ObjectFactory &objFactory)
+{
+	ObjectType obj = objFactory.makeObject();
+	//do stuff
+}
+//new way
+template <typename ObjectFactory>
+void CreateObject(const ObjectFactory &objFactory)
+{
+	auto obj = objFactory.MakeObject();
+	//do stuff
+}
+
+
+
 int main()
 {
     std::cout << "Hello World!\n";
