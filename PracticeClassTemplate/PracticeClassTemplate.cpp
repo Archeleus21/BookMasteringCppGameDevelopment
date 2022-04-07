@@ -36,7 +36,7 @@ void Swap(T &a, T &b)
 //Variable Template
 //=========================================================================
 template <class T>
-constexpr T pi = 3.01415926535897932385;
+constexpr T pi = 3.1415926535897932385;
 
 //example using template above
 template <typename T>
