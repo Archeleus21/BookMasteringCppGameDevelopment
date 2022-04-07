@@ -50,17 +50,44 @@ T area_of_circle_with_radius(T r)
 //=========================================================================
 //Old way
 template <typename ObjectType, typename ObjectFactory>
-void createObject(const ObjectFactory &objFactory)
+void CreateObject(const ObjectFactory &objFactory)
 {
 	ObjectType obj = objFactory.makeObject();
 	//do stuff
 }
+/*
+//calling this code will look like this
+MyObjFactory objFactory;
+CreateObject<PreDefinedObj>(objFactory);
+*/
 //new way
 template <typename ObjectFactory>
 void CreateObject(const ObjectFactory &objFactory)
 {
 	auto obj = objFactory.MakeObject();
 	//do stuff
+}
+/*
+//calling this code will look like this
+MyObjFactory objFactory;
+CreateObject (objFactory);
+*/
+//=========================================================================
+//Template using the datatype "auto" helper decltype - this extracts the type out of a variable
+//=========================================================================
+//before decaltype
+TreeObject CreateObject(const ObjectFactory &objFactory)
+{
+	auto obj = objFactory.makeObject();
+	return obj;
+}
+//after decaltype
+template <typename ObjectFactory>
+auto CreateObject(const ObjectFactory &objFactory); > decltype
+(objFactory.makeObject())
+{
+	auto obj = objFactory.MakeObject();
+	return obj;
 }
 
 
