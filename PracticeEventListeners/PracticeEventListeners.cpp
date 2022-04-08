@@ -2,8 +2,9 @@
 //
 
 #include <iostream>
-
+//===========================================================================
 //using dynamic_cast to determine the event type at run time because of Run-time Type Information (RTTI)
+//===========================================================================
 class Event
 {
 protected:
@@ -22,8 +23,27 @@ void onEvent(Event* event)
 	}
 	//etc....
 }
+//===========================================================================
+//we can even use a template to make it more flexible
+//===========================================================================
+template <class T>
+bool TryHandleEvent(const Event* event)
+{
+	if (const T* evnet = dynamic_cast<const T*> (event))
+	{
+		Return HandleEvent(event);
+	}
+	return false;
+}
 
+void OnEvent(const Event* event)
+{
+	if (TryHandleEvent<Collision>(event)) return;
+	else if (TryHandleEvent<Explosion>(event)) return;
+}
+//===========================================================================
 //event could be an enum or struct that houses the different event types
+//===========================================================================
 void GameObject::HandleEvent(Event* event)
 {
 	switch (event)
