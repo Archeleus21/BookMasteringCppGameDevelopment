@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-void HelloWorld()
+_declspec(dllexport) void HelloWorld()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Hello World Dynamically!\n";
 }
 
 int main()
