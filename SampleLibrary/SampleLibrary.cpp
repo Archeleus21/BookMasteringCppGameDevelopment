@@ -6,8 +6,5 @@
 _declspec(dllexport) void HelloWorld()
 {
     std::cout << "Hello World Dynamically!\n";
-}
-
-int main()
-{
+	std::cout << "Version 2" << std::endl;
 }
